@@ -16,10 +16,31 @@
             color: white;
             padding: 10px;
             text-align: center;
+            position: relative; /* Allows absolute positioning of child elements */
+        }
+        .button-container {
+            position: absolute;
+            top: 90px; /* Moved buttons up by 70 pixels */
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            padding: 15px 25px; /* Increased padding */
+            background-color: #ADD8E6; /* Light blue for the buttons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Increased font size */
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #87CEEB; /* Slightly darker shade on hover */
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto; /* Add margin to prevent overlap */
             padding: 20px;
             background-color: white;
             border-radius: 8px;
@@ -28,6 +49,7 @@
         .container h1 {
             text-align: center;
             color: #007bff;
+            margin: 70px 0; /* Moved the header down by 50 pixels */
         }
         .form-group {
             margin-bottom: 15px;
@@ -91,6 +113,11 @@
 <body>
 
 <header>
+    <div class="button-container">
+        <button class="button">Home</button>
+        <button class="button">About</button>
+        <button class="button">Lab</button>
+    </div>
     <h1>Create Account / Update Profile</h1>
 </header>
 

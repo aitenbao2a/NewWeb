@@ -1,242 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - User Interface</title>
+    <title>Giao Diện Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMjczZ7Hqj5zHx6gOM5oWlY33U/sgtW1IXc7t7" crossorigin="anonymous">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
             text-align: center;
-            position: relative; /* Allows absolute positioning of child elements */
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            width: 80%; /* Mở rộng chiều rộng khung chữ */
+            max-width: 800px; /* Giới hạn chiều rộng tối đa */
+            padding: 20px; /* Thêm khoảng cách bên trong */
+            background-color: rgba(255, 255, 255, 0.3); /* Thay đổi độ trong suốt của khung chữ */
+            border-radius: 10px; /* Bo góc cho khung chữ */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+        }
+        h1 {
+            font-size: 60px; /* Tăng cỡ chữ */
+            margin: 0;
+            color: #98FB98; /* Màu chữ xanh lá non */
+            font-family: 'Pacifico', cursive; /* Kiểu chữ khác */
+            position: relative;
+            animation: moveText 3s infinite alternate;
+            line-height: 1.2; /* Thêm khoảng cách giữa các dòng */
+        }
+        p {
+            font-size: 28px; /* Tăng cỡ chữ */
+            margin: 10px 0 0 0;
+            color: #E0F7FA; /* Màu chữ pastel nhẹ nhàng */
+            position: relative;
+            animation: moveText 4s infinite alternate;
+            line-height: 1.4; /* Thêm khoảng cách giữa các dòng */
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-size: cover;
+            transition: background-image 1s ease-in-out;
+        }
+        @keyframes moveText {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-10px, -10px); }
+            100% { transform: translate(10px, 10px); }
         }
         .button-container {
             position: absolute;
-            top: 90px; /* Moved buttons up by 70 pixels */
+            top: 20px;
             right: 20px;
             display: flex;
-            gap: 10px;
+            gap: 10px; /* Khoảng cách giữa các nút */
         }
         .button {
-            padding: 15px 25px; /* Increased padding */
-            background-color: #ADD8E6; /* Light blue for the buttons */
-            color: white;
+            display: flex;
+            align-items: center;
+            background-color: #A5D6A7; /* Nền nút About nhạt hơn */
+            color: #fff; /* Màu chữ nút About */
             border: none;
             border-radius: 5px;
+            padding: 15px 20px; /* Tăng kích thước nút */
+            font-size: 20px; /* Tăng cỡ chữ nút */
             cursor: pointer;
-            font-size: 18px; /* Increased font size */
-            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button:nth-child(2) {
+            background-color: #90CAF9; /* Nền nút Lab nhạt hơn */
         }
         .button:hover {
-            background-color: #87CEEB; /* Slightly darker shade on hover */
+            transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
         }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto; /* Add margin to prevent overlap */
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .button:hover:nth-child(1) {
+            background-color: #81C784; /* Màu nền khi hover nút About */
         }
-        .container h1 {
-            text-align: center;
-            color: #007bff;
-            margin: 70px 0; /* Moved the header down by 50 pixels */
+        .button:hover:nth-child(2) {
+            background-color: #64B5F6; /* Màu nền khi hover nút Lab */
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="password"],
-        .form-group select,
-        .form-group input[type="url"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group input[type="password"] {
-            width: calc(100% - 50px);
-            display: inline-block;
-        }
-        .form-group .toggle-password {
-            display: inline-block;
-            width: 40px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-left: 10px;
-            text-align: center;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-        .buttons button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .buttons .primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .buttons .secondary {
-            background-color: #ccc;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #007bff;
-            color: white;
+        .button i {
+            margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="button-container">
-        <button class="button">Home</button>
-        <button class="button">About</button>
-        <button class="button">Lab</button>
+    <div class="background" id="background"></div>
+    <div class="container">
+        <h1>Xin chào</h1>
+        <p>Bạn đã chọn và nó đã đúng!</p>
     </div>
-    <h1>Create Account / Update Profile</h1>
-</header>
+    <div class="button-container">
+        <button class="button"><i class="fas fa-info-circle"></i>About</button>
+        <button class="button"><i class="fas fa-flask"></i>Lab</button>
+    </div>
 
-<div class="container">
-    <form>
-        <!-- Username -->
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter your username" maxlength="255" required>
-            <small class="error-message" style="color:red;"></small>
-        </div>
+    <script>
+        const images = [
+            'https://cdn.pixabay.com/photo/2024/03/21/14/36/forest-8647829_960_720.jpg',
+            'https://cdn.pixabay.com/photo/2024/09/19/11/34/mountain-9058566_1280.jpg',
+            'https://cdn.pixabay.com/video/2024/09/19/232185_large.mp4',
+            'https://cdn.pixabay.com/photo/2024/04/09/22/28/trees-8686902_1280.jpg',
+            'https://cdn.pixabay.com/photo/2023/10/24/19/09/nevada-8338929_1280.jpg'
+        ];
 
-        <!-- Password -->
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" maxlength="255" required>
-            <span class="toggle-password" onclick="togglePassword()">Show</span>
-            <small class="error-message" style="color:red;"></small>
-        </div>
+        let currentIndex = 0;
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email" maxlength="255" required>
-            <small class="error-message" style="color:red;"></small>
-        </div>
-
-        <!-- Full Name (Optional) -->
-        <div class="form-group">
-            <label for="full-name">Full Name (Optional)</label>
-            <input type="text" id="full-name" placeholder="Enter your full name" maxlength="255">
-        </div>
-
-        <!-- Role -->
-        <div class="form-group">
-            <label for="role">Role</label>
-            <select id="role" required>
-                <option value="">Select your role</option>
-                <option value="Admin">Admin</option>
-                <option value="User">User</option>
-            </select>
-        </div>
-
-        <!-- Profile Picture -->
-        <div class="form-group">
-            <label for="profile-picture">Profile Picture</label>
-            <input type="url" id="profile-picture" placeholder="Enter image URL or upload">
-            <img id="profile-preview" src="https://via.placeholder.com/100" alt="Profile Picture Preview">
-        </div>
-
-        <!-- Read-Only Fields -->
-        <div class="form-group">
-            <label for="account-created">Account Created At</label>
-            <input type="text" id="account-created" value="2024-09-28 12:00:00" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="last-updated">Last Updated At</label>
-            <input type="text" id="last-updated" value="2024-09-28 12:30:00" readonly>
-        </div>
-
-        <!-- Import Button -->
-        <div class="form-group">
-            <label for="import-excel">Import Excel Data</label>
-            <input type="file" id="import-excel" accept=".xls,.xlsx">
-            <small class="error-message" style="color:red;"></small>
-        </div>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <button type="submit" class="primary">Create Account</button>
-            <button type="button" class="secondary">Cancel</button>
-        </div>
-    </form>
-</div>
-
-<footer>
-    <p>&copy; 2024 Your Company. All rights reserved.</p>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
-<script>
-    // Toggle Password Visibility
-    function togglePassword() {
-        var passwordInput = document.getElementById("password");
-        var toggleButton = document.querySelector(".toggle-password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleButton.textContent = "Hide";
-        } else {
-            passwordInput.type = "password";
-            toggleButton.textContent = "Show";
+        function changeBackground() {
+            const background = document.getElementById('background');
+            background.style.backgroundImage = `url(${images[currentIndex]})`;
+            currentIndex = (currentIndex + 1) % images.length;
         }
-    }
 
-    // Image Preview Functionality
-    document.getElementById('profile-picture').addEventListener('input', function() {
-        var imageUrl = this.value;
-        var preview = document.getElementById('profile-preview');
-        preview.src = imageUrl ? imageUrl : 'https://via.placeholder.com/100';
-    });
-
-    // Handle Excel file import
-    document.getElementById('import-excel').addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        if (file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var data = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, {type: 'array'});
-                var firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-                var jsonData = XLSX.utils.sheet_to_json(firstSheet, {header: 1});
-                console.log(jsonData); // Log data for testing, or process as needed
-                // Update your form fields with the imported data
-            };
-            reader.readAsArrayBuffer(file);
-        }
-    });
-</script>
-
+        changeBackground(); 
+        setInterval(changeBackground, 5000); 
+    </script>
 </body>
 </html>

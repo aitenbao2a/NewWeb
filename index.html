@@ -81,16 +81,25 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, transform 0.2s;
         }
+        .button:nth-child(1) {
+            background-color: #FFB74D; /* Nền nút Home */
+        }
         .button:nth-child(2) {
+            background-color: #A5D6A7; /* Nền nút About nhạt hơn */
+        }
+        .button:nth-child(3) {
             background-color: #90CAF9; /* Nền nút Lab nhạt hơn */
         }
         .button:hover {
             transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
         }
         .button:hover:nth-child(1) {
-            background-color: #81C784; /* Màu nền khi hover nút About */
+            background-color: #FF9800; /* Màu nền khi hover nút Home */
         }
         .button:hover:nth-child(2) {
+            background-color: #81C784; /* Màu nền khi hover nút About */
+        }
+        .button:hover:nth-child(3) {
             background-color: #64B5F6; /* Màu nền khi hover nút Lab */
         }
         .button i {
@@ -105,6 +114,7 @@
         <p>Bạn đã chọn và nó đã đúng!</p>
     </div>
     <div class="button-container">
+        <button class="button"><i class="fas fa-home"></i>Home</button> <!-- Nút Home ở vị trí đầu tiên -->
         <button class="button"><i class="fas fa-info-circle"></i>About</button>
         <button class="button"><i class="fas fa-flask"></i>Lab</button>
     </div>
